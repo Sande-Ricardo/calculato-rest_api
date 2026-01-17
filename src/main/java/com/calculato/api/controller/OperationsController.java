@@ -1,5 +1,7 @@
 package com.calculato.api.controller;
 
+import com.calculato.api.dto.DerivativeRequestDTO;
+import com.calculato.api.dto.DerivativeResponseDTO;
 import com.calculato.api.dto.IntegrationRequestDTO;
 import com.calculato.api.dto.IntegrationResponseDTO;
 import org.slf4j.Logger;
@@ -20,9 +22,9 @@ public class OperationsController {
 
 
     @PostMapping("/derivation")
-    public ResponseEntity<String> derivation(@RequestBody String expression){
-        this.logger.debug(expression);
-        return ResponseEntity.ok(operationsService.derivation(expression));
+    public ResponseEntity<DerivativeResponseDTO> derivation(@RequestBody DerivativeRequestDTO req){
+        this.logger.debug(req.getExpression());
+        return ResponseEntity.ok(operationsService.derivation(req));
     }
 
     @PostMapping("/integration")
@@ -32,7 +34,10 @@ public class OperationsController {
 
     @GetMapping("/test/{expression}")
     public String saludar(@PathVariable String expression) {
-        return operationsService.derivation(expression);
+        DerivativeRequestDTO reqTest = new DerivativeRequestDTO();
+        reqTest.setExpression(expression);
+        reqTest.setVariable("x");
+        return operationsService.derivation(reqTest).getDerive();
     }
 
 }

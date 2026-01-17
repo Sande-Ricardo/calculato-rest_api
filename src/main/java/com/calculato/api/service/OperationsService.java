@@ -31,23 +31,14 @@ public class OperationsService {
         this.restTemplate = builder.build();
     }
 
-    public String derivation(String expression){
-
+    public DerivativeResponseDTO derivation(DerivativeRequestDTO req){
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        HttpEntity<DerivativeRequestDTO> entity = new HttpEntity<>(req, headers);
 
-        OperationRequest opRequest = new OperationRequest(expression);
-
-        HttpEntity<OperationRequest> request = new HttpEntity<>(opRequest, headers);
-
-        ResponseEntity<OperationResponse> response = restTemplate.exchange(
-                (this.microserviceUrl + "/api/derivation"),
-                HttpMethod.POST,
-                request,
-                OperationResponse.class
-        );
-
-        return response.getBody().result();
+        String url = this.microserviceUrl + "/api/derivation";
+        return restTemplate.postForObject(url, entity, DerivativeResponseDTO.class);
     }
 
     public IntegrationResponseDTO integration(IntegrationRequestDTO req){
