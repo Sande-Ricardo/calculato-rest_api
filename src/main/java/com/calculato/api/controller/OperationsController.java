@@ -2,6 +2,8 @@ package com.calculato.api.controller;
 
 import com.calculato.api.dto.DerivativeRequestDTO;
 import com.calculato.api.dto.DerivativeResponseDTO;
+import com.calculato.api.dto.EquationRequestDTO;
+import com.calculato.api.dto.EquationResponseDTO;
 import com.calculato.api.dto.IntegrationRequestDTO;
 import com.calculato.api.dto.IntegrationResponseDTO;
 import org.slf4j.Logger;
@@ -20,16 +22,21 @@ public class OperationsController {
 
     private final Logger logger = LoggerFactory.getLogger(OperationsController.class);
 
-
     @PostMapping("/derivation")
-    public ResponseEntity<DerivativeResponseDTO> derivation(@RequestBody DerivativeRequestDTO req){
+    public ResponseEntity<DerivativeResponseDTO> derivation(@RequestBody DerivativeRequestDTO req) {
         this.logger.debug(req.getExpression());
         return ResponseEntity.ok(operationsService.derivation(req));
     }
 
     @PostMapping("/integration")
-    public ResponseEntity<IntegrationResponseDTO> integration(@RequestBody IntegrationRequestDTO req){
+    public ResponseEntity<IntegrationResponseDTO> integration(@RequestBody IntegrationRequestDTO req) {
         return ResponseEntity.ok(operationsService.integration(req));
+    }
+
+    @PostMapping("/equation")
+    public ResponseEntity<EquationResponseDTO> equation(@RequestBody EquationRequestDTO req) {
+        this.logger.debug("Received equation operation for: {}", req.getExpression());
+        return ResponseEntity.ok(operationsService.equation(req));
     }
 
     @GetMapping("/test/{expression}")
