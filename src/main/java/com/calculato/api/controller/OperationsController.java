@@ -6,6 +6,8 @@ import com.calculato.api.dto.EquationRequestDTO;
 import com.calculato.api.dto.EquationResponseDTO;
 import com.calculato.api.dto.IntegrationRequestDTO;
 import com.calculato.api.dto.IntegrationResponseDTO;
+import com.calculato.api.dto.MatrixRequestDTO;
+import com.calculato.api.dto.MatrixResponseDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +39,12 @@ public class OperationsController {
     public ResponseEntity<EquationResponseDTO> equation(@RequestBody EquationRequestDTO req) {
         this.logger.debug("Received equation operation for: {}", req.getExpression());
         return ResponseEntity.ok(operationsService.equation(req));
+    }
+
+    @PostMapping("/matrix")
+    public ResponseEntity<MatrixResponseDTO> matrix(@RequestBody MatrixRequestDTO req) {
+        this.logger.debug("Received matrix operation for: {}", req.getOperation());
+        return ResponseEntity.ok(operationsService.matrix(req));
     }
 
     @GetMapping("/test/{expression}")

@@ -60,6 +60,16 @@ public class OperationsService {
         String url = this.microserviceUrl + "/api/equation";
         return restTemplate.postForObject(url, entity, EquationResponseDTO.class);
     }
+
+    public MatrixResponseDTO matrix(MatrixRequestDTO req){
+        HttpHeaders headers = new HttpHeaders();
+        headers.setContentType(MediaType.APPLICATION_JSON);
+        headers.setAccept(Collections.singletonList(MediaType.APPLICATION_JSON));
+        HttpEntity<MatrixRequestDTO> entity = new HttpEntity<>(req, headers);
+
+        String url = this.microserviceUrl + "/api/matrix";
+        return restTemplate.postForObject(url, entity, MatrixResponseDTO.class);
+    }
 //    public String integration(String expression){
 //
 //        HttpHeaders headers = new HttpHeaders();
