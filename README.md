@@ -32,6 +32,8 @@ B -- Response --> A
 + Derivative Calculator: Step-by-step results using differentiation rules.
 + Integral Calculator: Supports definite and indefinite integrals.
 + Function Visualizer: Interactive plots rendered on the client.
++ Matrix Operations: Performs linear algebra operations (inverse, determinant, rref).
++ Equation Solver: Solves equations step-by-step.
 
 ### Prerequisites
 + Java 17+
