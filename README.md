@@ -34,6 +34,15 @@ B -- Response --> A
 + Function Visualizer: Interactive plots rendered on the client.
 + Matrix Operations: Performs linear algebra operations (inverse, determinant, rref).
 + Equation Solver: Solves equations step-by-step.
++ Descriptive Statistics: Computes central tendency, dispersion, position metrics, and outliers for datasets.
++ Probability Distributions: Computes probability values and coordinate points for discrete/continuous distributions.
++ Ordinary Differential Equations (ODE) Solver: Solves first-order ODEs and provides step-by-step pedagogical resolutions.
++ ODE Slope Field Generator: Generates flow fields and slope vectors for rendering.
+
+## API Documentation
+The API endpoints are automatically documented using OpenAPI 3.0 (SpringDoc). Once the Spring Boot Gateway is running:
+* **Swagger UI (Interactive Documentation):** Access at [http://localhost:8080/swagger-ui.html](http://localhost:8080/swagger-ui.html)
+* **OpenAPI Specification (JSON):** Access at [http://localhost:8080/v3/api-docs](http://localhost:8080/v3/api-docs)
 
 ### Prerequisites
 + Java 17+
