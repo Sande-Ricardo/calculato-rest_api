@@ -2,10 +2,12 @@ package com.calculato.api.dto;
 
 import lombok.Data;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
 @Data
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Schema(description = "Request object for equation resolution operation")
 public class EquationRequestDTO {
     @Schema(description = "The equation or expression in LaTeX format", example = "x^2 + 5x + 6 = 0")
